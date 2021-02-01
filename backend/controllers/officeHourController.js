@@ -8,6 +8,11 @@ const convertTimeToMinutes = (time) => {
 const convertToMinutes = (req, res, next) => {
     try {
         const {t1, t2} = req.body
+
+        if (!t1 && t1 !== 0 || !t2 && 2 !== 0) {
+            return res.status(400).json({msg: 'A field was not entered'})
+        }
+
         const newT1 = convertTimeToMinutes(t1)
         const newT2 = convertTimeToMinutes(t2)
 
