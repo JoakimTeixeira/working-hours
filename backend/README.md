@@ -6,11 +6,7 @@ System that calculates diurnal and nocturnal working hours
 
 ## Running the Project
 
-To get started, fork the repository and rename the file ".env-example" to ".env" and fill in information about your mongoDB cluster.
-
-Then, run the following commands:
+To get started, fork the repository and then run the following commands:
 
     npm install
     npm run start:dev
-
-After that, access the URL `localhost:3001` in the browser.
