@@ -17,4 +17,5 @@ app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`))
 
 // Setup routes
 // Loads officerHourRouter endpoint
-app.use('/convert', require('./routes/officeHourRouter'))
+app.use('/convert', require('./routes/convertTimeRouter'))
+app.use('/calculate', require('./routes/calculateTimeRouter'))
