@@ -16,6 +16,6 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`))
 
 // Setup routes
-// Loads officerHourRouter endpoint
+// Loads convertTimeRouter and calculateTimeRouter endpoints
 app.use('/convert', require('./routes/convertTimeRouter'))
 app.use('/calculate', require('./routes/calculateTimeRouter'))
