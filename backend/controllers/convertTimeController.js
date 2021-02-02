@@ -16,7 +16,7 @@ const convertToMinutes = (req, res, next) => {
     const newT1 = convertTimeToMinutes(t1)
     const newT2 = convertTimeToMinutes(t2)
 
-    res.json({
+    return res.json({
       t1: newT1,
       t2: newT2
     })
@@ -49,12 +49,12 @@ const convertFromMinutes = (req, res, next) => {
     const convertedDiurnal = convertTimeFromMinutes(diurnal)
     const convertedNocturnal = convertTimeFromMinutes(nocturnal)
 
-    res.json({
+    return res.json({
       diurnal: convertedDiurnal,
       nocturnal: convertedNocturnal
     })
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    return res.status(500).json({ error: error.message })
   }
 }
 

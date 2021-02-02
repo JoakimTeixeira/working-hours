@@ -13,7 +13,7 @@ const calculateWorkingHours = (req, res, next) => {
         const day2 = t2
         const diurnal = day2 - day1
 
-        res.json({ diurnal })
+        return res.json({ diurnal })
       }
 
       if (t2 > 1320) {
@@ -21,7 +21,7 @@ const calculateWorkingHours = (req, res, next) => {
         const nocturnal = 1440 - night2
         const diurnal = (night2 - day1) - nocturnal
 
-        res.json({
+        return res.json({
           diurnal,
           nocturnal
         })
@@ -30,7 +30,7 @@ const calculateWorkingHours = (req, res, next) => {
         const nocturnal = dawn2 + 120
         const diurnal = 1320 - day1
 
-        res.json({
+        return res.json({
           diurnal,
           nocturnal
         })
@@ -45,7 +45,7 @@ const calculateWorkingHours = (req, res, next) => {
         const nocturnal = (1440 - night1) + 300
         const diurnal = day2 - 300
 
-        res.json({
+        return res.json({
           diurnal,
           nocturnal
         })
@@ -55,12 +55,12 @@ const calculateWorkingHours = (req, res, next) => {
         const night2 = t2
         const nocturnal = night2 - night1
 
-        res.json({ nocturnal })
+        return res.json({ nocturnal })
       } else {
         const dawn2 = t2
         const nocturnal = (1440 - night1) + dawn2
 
-        res.json({ nocturnal })
+        return res.json({ nocturnal })
       }
     } else {
       const dawn1 = t1
@@ -70,7 +70,7 @@ const calculateWorkingHours = (req, res, next) => {
         const nocturnal = 300 - dawn1
         const diurnal = day2 - 300
 
-        res.json({
+        return res.json({
           diurnal,
           nocturnal
         })
@@ -81,7 +81,7 @@ const calculateWorkingHours = (req, res, next) => {
         const nocturnal = (1440 - night2) + (300 - dawn1)
         const diurnal = 1320 - 300
 
-        res.json({
+        return res.json({
           diurnal,
           nocturnal
         })
@@ -89,11 +89,11 @@ const calculateWorkingHours = (req, res, next) => {
         const dawn2 = t2
         const nocturnal = dawn2 - dawn1
 
-        res.json({ nocturnal })
+        return res.json({ nocturnal })
       }
     }
   } catch (error) {
-    res.json(500).json({ error: error.message })
+    return res.json(500).json({ error: error.message })
   }
 }
 
