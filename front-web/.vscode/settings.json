@@ -1,0 +1,7 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "html-css-class-completion.enableEmmetSupport": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    }
+  }
