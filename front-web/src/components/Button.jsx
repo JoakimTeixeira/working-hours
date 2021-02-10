@@ -3,17 +3,18 @@ import Axios from 'axios';
 import { TimeContext } from 'contexts/TimeContext';
 
 const Button = () => {
-  const { time, setTime } = useContext(TimeContext);
+  const { time, resetTimeInputs, setConvertedTime } = useContext(TimeContext);
 
   const convertTimeToMinutes = async () => {
     const timeInMinutes = await Axios.post(
       'http://localhost:3001/convert/toMinutes',
-      { t1: time.t1, t2: time.t2 },
+      { t1: time.inputT1, t2: time.inputT2 },
       {
         headers: { 'Content-Type': 'application/json' },
       }
     );
-    setTime(timeInMinutes.data);
+    setConvertedTime(timeInMinutes.data);
+    resetTimeInputs();
   };
 
   return (

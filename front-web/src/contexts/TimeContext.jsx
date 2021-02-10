@@ -9,9 +9,27 @@ export const TimeContextProvider = ({ children }) => {
   };
 
   const [time, setTime] = useState({
+    inputT1: '',
+    inputT2: '',
+  });
+
+  const resetTimeInputs = () => {
+    setTime({
+      inputT1: '',
+      inputT2: '',
+    });
+  };
+
+  const [convertedTime, setConvertedTime] = useState({
     t1: '',
     t2: '',
   });
 
-  return <TimeContext.Provider value={{ time, setTime }}>{children}</TimeContext.Provider>;
+  return (
+    <TimeContext.Provider
+      value={{ time, setTime, resetTimeInputs, convertedTime, setConvertedTime }}
+    >
+      {children}
+    </TimeContext.Provider>
+  );
 };
