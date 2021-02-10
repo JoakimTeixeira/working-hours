@@ -49,6 +49,12 @@ export const TimeContextProvider = ({ children }) => {
     nocturnal: 0,
   });
 
+  const [isError, setIsError] = useState('');
+
+  const clearError = () => {
+    setIsError('');
+  };
+
   return (
     <TimeContext.Provider
       value={{
@@ -63,6 +69,9 @@ export const TimeContextProvider = ({ children }) => {
         resetRawResult,
         convertedResult,
         setConvertedResult,
+        isError,
+        setIsError,
+        clearError,
       }}
     >
       {children}

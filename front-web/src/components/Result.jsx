@@ -11,23 +11,32 @@ const Result = () => {
     resetRawResult,
     convertedResult,
     setConvertedResult,
+    setIsError,
   } = useContext(TimeContext);
 
   useEffect(() => {
     const calculateTime = async () => {
-      const { t1, t2 } = convertedTime;
+      try {
+        const { t1, t2 } = convertedTime;
 
-      const response = await Axios.post(
-        'http://localhost:3001/calculate',
-        { t1, t2 },
-        {
-          headers: { 'Content-Type': 'application/json' },
+        const response = await Axios.post(
+          'http://localhost:3001/calculate',
+          { t1, t2 },
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        const calculatedTime = response.data;
+
+        setRawResult({ ...rawResult, ...calculatedTime });
+        resetConvertedTime();
+      } catch (error) {
+        if (error.response.data.msg) {
+          setIsError(error.response.data.msg);
+        } else {
+          setIsError(error.response.data.error);
         }
-      );
-      const calculatedTime = response.data;
-
-      setRawResult({ ...rawResult, ...calculatedTime });
-      resetConvertedTime();
+      }
     };
 
     if (convertedTime.t1 && convertedTime.t2) {
@@ -39,14 +48,22 @@ const Result = () => {
     const { diurnal, nocturnal } = rawResult;
 
     const convertResultFromMinutes = async () => {
-      const response = await Axios.post(
-        'http://localhost:3001/convert/fromMinutes',
-        { diurnal, nocturnal },
-        {
-          headers: { 'Content-Type': 'application/json' },
+      try {
+        const response = await Axios.post(
+          'http://localhost:3001/convert/fromMinutes',
+          { diurnal, nocturnal },
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        setConvertedResult(response.data);
+      } catch (error) {
+        if (error.response.data.msg) {
+          setIsError(error.response.data.msg);
+        } else {
+          setIsError(error.response.data.error);
         }
-      );
-      setConvertedResult(response.data);
+      }
     };
 
     if ((diurnal && diurnal !== 0) || (nocturnal && nocturnal !== 0)) {
