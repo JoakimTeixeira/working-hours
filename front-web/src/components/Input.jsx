@@ -10,11 +10,24 @@ const Input = ({ inputName }) => {
   const { time, setTime } = useContext(TimeContext);
 
   const handleInput = (e) => {
-    if (inputName === 't1') setTime({ ...time, t1: e.target.value });
-    if (inputName === 't2') setTime({ ...time, t2: e.target.value });
+    if (inputName === 't1') setTime({ ...time, inputT1: e.target.value });
+    if (inputName === 't2') setTime({ ...time, inputT2: e.target.value });
   };
 
-  return <input type="time" name={inputName} onChange={(e) => handleInput(e, inputName)} />;
+  const handleInputValue = () => {
+    if (inputName === 't1') return time.inputT1;
+    if (inputName === 't2') return time.inputT2;
+    return '';
+  };
+
+  return (
+    <input
+      type="time"
+      name={inputName}
+      value={handleInputValue()}
+      onChange={(e) => handleInput(e, inputName)}
+    />
+  );
 };
 
 export default Input;
