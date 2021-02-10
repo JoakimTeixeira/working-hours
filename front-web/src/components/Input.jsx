@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TimeContext } from 'contexts/TimeContext';
 
-const Input = ({ inputName }) => {
+const Input = ({ inputName, inputLabel }) => {
   Input.propTypes = {
     inputName: PropTypes.string.isRequired,
+    inputLabel: PropTypes.string.isRequired,
   };
 
   const { time, setTime } = useContext(TimeContext);
@@ -21,12 +22,20 @@ const Input = ({ inputName }) => {
   };
 
   return (
-    <input
-      type="time"
-      name={inputName}
-      value={handleInputValue()}
-      onChange={(e) => handleInput(e, inputName)}
-    />
+    <article className="row label-container" style={{ display: 'flex', alignItems: 'center' }}>
+      <label htmlFor={inputName} className="col s4" style={{ marginLeft: '0', padding: '0' }}>
+        <span style={{ color: '#000', fontSize: '1.5rem' }}>{inputLabel}</span>
+      </label>
+      <input
+        type="time"
+        name={inputName}
+        id={inputName}
+        className="col s4"
+        style={{ border: '1px solid black', padding: '.3rem', height: '100%' }}
+        value={handleInputValue()}
+        onChange={(e) => handleInput(e, inputName)}
+      />
+    </article>
   );
 };
 

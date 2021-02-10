@@ -4,19 +4,28 @@ import Button from 'components/Button';
 import Result from 'components/Result';
 import { TimeContext } from 'contexts/TimeContext';
 import { AlertMessage } from 'components/AlertMessage';
+import './App.css';
 
 function App() {
   const { isError, clearError } = useContext(TimeContext);
 
   return (
     <>
-      <h1>Working hours</h1>
+      <main className="container">
+        <section>
+          <h1>Working hours</h1>
 
-      {isError && <AlertMessage isError={isError} clearError={clearError} />}
-      <Input inputName="t1" />
-      <Input inputName="t2" />
-      <Button />
-      <Result />
+          {isError && <AlertMessage isError={isError} clearError={clearError} />}
+          <div style={{ padding: '1.5rem 0 1rem 0' }}>
+            <Input inputName="t1" inputLabel="START: " />
+            <Input inputName="t2" inputLabel="END: " />
+          </div>
+          <Button />
+        </section>
+        <section>
+          <Result />
+        </section>
+      </main>
     </>
   );
 }

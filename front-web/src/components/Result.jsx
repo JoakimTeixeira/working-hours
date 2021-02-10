@@ -82,10 +82,10 @@ const Result = () => {
 
   return (
     verifyResult() && (
-      <section>
+      <>
         <div>{`Diurnal: ${convertedResult.diurnal}`}</div>
         <div>{`Nocturnal: ${convertedResult.nocturnal}`}</div>
-      </section>
+      </>
     )
   );
 };

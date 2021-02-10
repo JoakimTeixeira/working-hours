@@ -29,12 +29,13 @@ const Button = () => {
 
   return (
     <button
-      className="btn waves-effect waves-light"
+      className="btn-large waves-effect waves-light"
       type="submit"
       name="action"
       onClick={convertTimeToMinutes}
+      style={{ width: '100%' }}
     >
-      Submit
+      CALCULATE
     </button>
   );
 };
