@@ -19,9 +19,10 @@ const Result = () => {
     const calculateTime = async () => {
       try {
         const { t1, t2 } = convertedTime;
+        const apiUri = 'https://working-hours-api.herokuapp.com/calculate';
 
         const response = await Axios.post(
-          'http://localhost:3001/calculate',
+          apiUri,
           { t1, t2 },
           {
             headers: { 'Content-Type': 'application/json' },
@@ -50,8 +51,10 @@ const Result = () => {
 
     const convertResultFromMinutes = async () => {
       try {
+        const apiUri = 'https://working-hours-api.herokuapp.com/convert/fromMinutes';
+
         const response = await Axios.post(
-          'http://localhost:3001/convert/fromMinutes',
+          apiUri,
           { diurnal, nocturnal },
           {
             headers: { 'Content-Type': 'application/json' },

@@ -9,8 +9,10 @@ const Button = () => {
     try {
       const { inputT1, inputT2 } = time;
 
+      const apiUri = 'https://working-hours-api.herokuapp.com/convert/toMinutes';
+
       const timeInMinutes = await Axios.post(
-        'http://localhost:3001/convert/toMinutes',
+        apiUri,
         { t1: inputT1, t2: inputT2 },
         {
           headers: { 'Content-Type': 'application/json' },
