@@ -1,21 +1,55 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Axios from 'axios';
 import { TimeContext } from 'contexts/TimeContext';
 
 const Button = () => {
-  const { time, resetTimeInputs, setConvertedTime } = useContext(TimeContext);
+  const {
+    time,
+    resetTimeInputs,
+    convertedTime,
+    setConvertedTime,
+    resetConvertedTime,
+    result,
+    setResult,
+  } = useContext(TimeContext);
 
   const convertTimeToMinutes = async () => {
-    const timeInMinutes = await Axios.post(
-      'http://localhost:3001/convert/toMinutes',
-      { t1: time.inputT1, t2: time.inputT2 },
-      {
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-    setConvertedTime(timeInMinutes.data);
-    resetTimeInputs();
+    const { inputT1, inputT2 } = time;
+
+    if (inputT1 && inputT2) {
+      const timeInMinutes = await Axios.post(
+        'http://localhost:3001/convert/toMinutes',
+        { t1: inputT1, t2: inputT2 },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      setConvertedTime(timeInMinutes.data);
+      resetTimeInputs();
+    }
   };
+
+  useEffect(() => {
+    const calculateTime = async () => {
+      const { t1, t2 } = convertedTime;
+
+      const response = await Axios.post(
+        'http://localhost:3001/calculate',
+        { t1, t2 },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      const calculatedTime = response.data;
+
+      setResult({ ...result, ...calculatedTime });
+      resetConvertedTime();
+    };
+
+    if (convertedTime.t1 && convertedTime.t2) {
+      calculateTime();
+    }
+  }, [convertedTime]);
 
   return (
     <button

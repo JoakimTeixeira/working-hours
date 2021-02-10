@@ -25,9 +25,30 @@ export const TimeContextProvider = ({ children }) => {
     t2: '',
   });
 
+  const resetConvertedTime = () => {
+    setConvertedTime({
+      t1: '',
+      t2: '',
+    });
+  };
+
+  const [result, setResult] = useState({
+    diurnal: 0,
+    nocturnal: 0,
+  });
+
   return (
     <TimeContext.Provider
-      value={{ time, setTime, resetTimeInputs, convertedTime, setConvertedTime }}
+      value={{
+        time,
+        setTime,
+        resetTimeInputs,
+        convertedTime,
+        setConvertedTime,
+        resetConvertedTime,
+        result,
+        setResult,
+      }}
     >
       {children}
     </TimeContext.Provider>
