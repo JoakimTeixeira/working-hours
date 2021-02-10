@@ -16,11 +16,11 @@ main.container {
   max-width: 400px;
   margin-top: 5rem;
   margin-bottom: 3rem;
-  padding: 3rem;
+  padding: 4rem;
 }
 
 .container h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0 0 2rem 0;
   text-align: center;
 }

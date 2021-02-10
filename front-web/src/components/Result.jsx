@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { TimeContext } from 'contexts/TimeContext';
 import Axios from 'axios';
+import Card from './Card';
 
 const Result = () => {
   const {
@@ -83,8 +84,12 @@ const Result = () => {
   return (
     verifyResult() && (
       <>
-        <div>{`Diurnal: ${convertedResult.diurnal}`}</div>
-        <div>{`Nocturnal: ${convertedResult.nocturnal}`}</div>
+        {convertedResult.diurnal !== '00:00' && (
+          <Card cardName="Diurnal" data={convertedResult.diurnal} />
+        )}
+        {convertedResult.nocturnal !== '00:00' && (
+          <Card cardName="Nocturnal" data={convertedResult.nocturnal} />
+        )}
       </>
     )
   );
