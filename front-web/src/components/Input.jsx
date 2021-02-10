@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { TimeContext } from 'contexts/TimeContext';
 
-const Input = ({ inputName, time, setTime }) => {
+const Input = ({ inputName }) => {
   Input.propTypes = {
     inputName: PropTypes.string.isRequired,
-    time: PropTypes.shape({
-      t1: PropTypes.string,
-      t2: PropTypes.string,
-    }).isRequired,
-    setTime: PropTypes.func.isRequired,
   };
+
+  const { time, setTime } = useContext(TimeContext);
 
   const handleInput = (e) => {
     if (inputName === 't1') setTime({ ...time, t1: e.target.value });

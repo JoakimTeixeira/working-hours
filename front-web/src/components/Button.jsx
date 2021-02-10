@@ -1,15 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import Axios from 'axios';
+import { TimeContext } from 'contexts/TimeContext';
 
-const Button = ({ time, setTime }) => {
-  Button.propTypes = {
-    time: PropTypes.shape({
-      t1: PropTypes.string,
-      t2: PropTypes.string,
-    }).isRequired,
-    setTime: PropTypes.func.isRequired,
-  };
+const Button = () => {
+  const { time, setTime } = useContext(TimeContext);
 
   const convertTimeToMinutes = async () => {
     const timeInMinutes = await Axios.post(
