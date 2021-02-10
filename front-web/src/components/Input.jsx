@@ -30,7 +30,7 @@ const Input = ({ inputName, inputLabel }) => {
         type="time"
         name={inputName}
         id={inputName}
-        className="col s4"
+        className="col s5"
         style={{ border: '1px solid black', padding: '.3rem', height: '100%' }}
         value={handleInputValue()}
         onChange={(e) => handleInput(e, inputName)}
