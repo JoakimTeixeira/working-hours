@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from 'components/Input';
 import Button from 'components/Button';
+import Result from 'components/Result';
 import { TimeContextProvider } from 'contexts/TimeContext';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Input inputName="t1" />
         <Input inputName="t2" />
         <Button />
+        <Result />
       </TimeContextProvider>
     </>
   );
