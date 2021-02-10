@@ -32,10 +32,19 @@ export const TimeContextProvider = ({ children }) => {
     });
   };
 
-  const [result, setResult] = useState({
+  const [rawResult, setRawResult] = useState({
     diurnal: 0,
     nocturnal: 0,
   });
+
+  const resetRawResult = () => {
+    setRawResult({
+      diurnal: 0,
+      nocturnal: 0,
+    });
+  };
+
+  const [convertedResult, setConvertedResult] = useState({});
 
   return (
     <TimeContext.Provider
@@ -46,8 +55,11 @@ export const TimeContextProvider = ({ children }) => {
         convertedTime,
         setConvertedTime,
         resetConvertedTime,
-        result,
-        setResult,
+        rawResult,
+        setRawResult,
+        resetRawResult,
+        convertedResult,
+        setConvertedResult,
       }}
     >
       {children}

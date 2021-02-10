@@ -9,8 +9,10 @@ const Button = () => {
     convertedTime,
     setConvertedTime,
     resetConvertedTime,
-    result,
-    setResult,
+    rawResult,
+    setRawResult,
+    resetRawResult,
+    setConvertedResult,
   } = useContext(TimeContext);
 
   const convertTimeToMinutes = async () => {
@@ -42,7 +44,7 @@ const Button = () => {
       );
       const calculatedTime = response.data;
 
-      setResult({ ...result, ...calculatedTime });
+      setRawResult({ ...rawResult, ...calculatedTime });
       resetConvertedTime();
     };
 
@@ -50,6 +52,26 @@ const Button = () => {
       calculateTime();
     }
   }, [convertedTime]);
+
+  useEffect(() => {
+    const { diurnal, nocturnal } = rawResult;
+
+    const convertResultFromMinutes = async () => {
+      const response = await Axios.post(
+        'http://localhost:3001/convert/fromMinutes',
+        { diurnal, nocturnal },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      setConvertedResult(response.data);
+    };
+
+    if ((diurnal && diurnal !== 0) || (nocturnal && nocturnal !== 0)) {
+      convertResultFromMinutes();
+      resetRawResult();
+    }
+  }, [rawResult]);
 
   return (
     <button
