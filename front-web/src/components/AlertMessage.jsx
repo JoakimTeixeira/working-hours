@@ -14,15 +14,16 @@ export const AlertMessage = ({ isError, clearError }) => {
   return (
     <div className="chip">
       {isError}
-      <i
-        className="close material-icons"
+      <div
+        className="close"
         role="button"
         tabIndex="0"
         onClick={clearError}
         onKeyPress={clearError}
+        style={{ outline: 'none' }}
       >
-        close
-      </i>
+        &#10005;
+      </div>
     </div>
   );
 };
