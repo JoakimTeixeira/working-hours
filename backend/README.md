@@ -1,6 +1,6 @@
 # Working hours
 
-System that calculates diurnal and nocturnal working hours
+Back end for system that calculates diurnal and nocturnal working hours
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
