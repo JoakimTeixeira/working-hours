@@ -7,6 +7,9 @@ System that calculates working hours
 ## To-do
 
 - [ ] Enhance mobile responsiveness
+- [ ] Implement "Favorites" feature
+- [ ] Save data temporally in Local Storage
+- [ ] Persist in database
 
 ## Running the Project
 
