@@ -12,6 +12,7 @@ System that calculates working hours
 
 ## To-do
 
+- [ ] Review algorithm logic
 - [ ] Enhance mobile responsiveness
 - [ ] Implement "Favorites" feature
 - [ ] Save data temporally in Local Storage
