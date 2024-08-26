@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { TimeContext } from 'contexts/TimeContext';
 import Axios from 'axios';
 import Card from './Card';
 
-const Result = () => {
+export default function Result() {
   const {
     convertedTime,
     resetConvertedTime,
@@ -96,6 +96,4 @@ const Result = () => {
       </>
     )
   );
-};
-
-export default Result;
+}

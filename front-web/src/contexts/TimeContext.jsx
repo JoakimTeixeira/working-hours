@@ -1,9 +1,9 @@
-import React, { createContext, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const TimeContext = createContext();
 
-export const TimeContextProvider = ({ children }) => {
+export function TimeContextProvider({ children }) {
   TimeContextProvider.propTypes = {
     children: PropTypes.node.isRequired,
   };
@@ -55,26 +55,40 @@ export const TimeContextProvider = ({ children }) => {
     setIsError('');
   };
 
-  return (
-    <TimeContext.Provider
-      value={{
-        time,
-        setTime,
-        resetTimeInputs,
-        convertedTime,
-        setConvertedTime,
-        resetConvertedTime,
-        rawResult,
-        setRawResult,
-        resetRawResult,
-        convertedResult,
-        setConvertedResult,
-        isError,
-        setIsError,
-        clearError,
-      }}
-    >
-      {children}
-    </TimeContext.Provider>
+  const value = useMemo(
+    () => ({
+      time,
+      setTime,
+      resetTimeInputs,
+      convertedTime,
+      setConvertedTime,
+      resetConvertedTime,
+      rawResult,
+      setRawResult,
+      resetRawResult,
+      convertedResult,
+      setConvertedResult,
+      isError,
+      setIsError,
+      clearError,
+    }),
+    [
+      time,
+      setTime,
+      resetTimeInputs,
+      convertedTime,
+      setConvertedTime,
+      resetConvertedTime,
+      rawResult,
+      setRawResult,
+      resetRawResult,
+      convertedResult,
+      setConvertedResult,
+      isError,
+      setIsError,
+      clearError,
+    ]
   );
-};
+
+  return <TimeContext.Provider value={value}>{children}</TimeContext.Provider>;
+}

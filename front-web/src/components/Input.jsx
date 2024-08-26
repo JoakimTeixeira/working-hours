@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TimeContext } from 'contexts/TimeContext';
 
-const Input = ({ inputName, inputLabel }) => {
+export default function Input({ inputName, inputLabel }) {
   Input.propTypes = {
     inputName: PropTypes.string.isRequired,
     inputLabel: PropTypes.string.isRequired,
@@ -33,10 +33,8 @@ const Input = ({ inputName, inputLabel }) => {
         className="col s5"
         style={{ border: '1px solid black', padding: '.3rem', height: '100%' }}
         value={handleInputValue()}
-        onChange={(e) => handleInput(e, inputName)}
+        onChange={(e) => handleInput(e)}
       />
     </article>
   );
-};
-
-export default Input;
+}

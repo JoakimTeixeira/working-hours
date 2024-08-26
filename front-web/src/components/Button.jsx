@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Axios from 'axios';
 import { TimeContext } from 'contexts/TimeContext';
 
-const Button = () => {
+export default function Button() {
   const { time, resetTimeInputs, setConvertedTime, setIsError } = useContext(TimeContext);
 
   const convertTimeToMinutes = async () => {
@@ -40,6 +40,4 @@ const Button = () => {
       CALCULATE
     </button>
   );
-};
-
-export default Button;
+}

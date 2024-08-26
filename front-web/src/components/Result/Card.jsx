@@ -1,7 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ cardName, data }) => {
+export default function Card({ cardName, data }) {
   Card.propTypes = {
     cardName: PropTypes.string.isRequired,
     data: PropTypes.string.isRequired,
@@ -22,6 +21,4 @@ const Card = ({ cardName, data }) => {
       {`${data} h`}
     </div>
   );
-};
-
-export default Card;
+}

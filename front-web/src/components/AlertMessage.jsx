@@ -1,7 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
-export const AlertMessage = ({ isError, clearError }) => {
+export function AlertMessage({ isError, clearError }) {
   AlertMessage.propTypes = {
     isError: PropTypes.oneOfType([() => undefined, PropTypes.string]),
     clearError: PropTypes.func.isRequired,
@@ -14,16 +13,16 @@ export const AlertMessage = ({ isError, clearError }) => {
   return (
     <div className="chip">
       {isError}
-      <div
+      <button
         className="close"
-        role="button"
+        type="button"
         tabIndex="0"
         onClick={clearError}
-        onKeyPress={clearError}
+        onKeyDown={clearError}
         style={{ outline: 'none' }}
       >
         &#10005;
-      </div>
+      </button>
     </div>
   );
-};
+}
