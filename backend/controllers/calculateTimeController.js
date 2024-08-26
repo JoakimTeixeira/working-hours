@@ -24,7 +24,7 @@ const calculateWorkingHours = (req, res, next) => {
       if (t2 > 1320) {
         const night2 = t2
         const nocturnal = 1440 - night2
-        const diurnal = (night2 - day1) - nocturnal
+        const diurnal = night2 - day1 - nocturnal
 
         return res.json({
           diurnal,
@@ -50,7 +50,7 @@ const calculateWorkingHours = (req, res, next) => {
       // Verify if 2nd input is between 05:00 AM and 10:00 PM
       if (t2 >= 300 && t2 <= 1320) {
         const day2 = t2
-        const nocturnal = (1440 - night1) + 300
+        const nocturnal = 1440 - night1 + 300
         const diurnal = day2 - 300
 
         return res.json({
@@ -68,7 +68,7 @@ const calculateWorkingHours = (req, res, next) => {
       } else {
         // Verify if 2nd input is less than 05:00 AM
         const dawn2 = t2
-        const nocturnal = (1440 - night1) + dawn2
+        const nocturnal = 1440 - night1 + dawn2
 
         return res.json({ nocturnal })
       }
@@ -90,7 +90,7 @@ const calculateWorkingHours = (req, res, next) => {
       // Verify if 2nd input is greater than 10:00 PM
       if (t2 > 1320) {
         const night2 = t2
-        const nocturnal = (1440 - night2) + (300 - dawn1)
+        const nocturnal = 1440 - night2 + (300 - dawn1)
         const diurnal = 1320 - 300
 
         return res.json({

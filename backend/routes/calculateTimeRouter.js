@@ -1,5 +1,7 @@
 const router = require('express').Router()
-const { calculateWorkingHours } = require('../controllers/calculateTimeController')
+const {
+  calculateWorkingHours
+} = require('../controllers/calculateTimeController')
 
 // Route from "calculate" endpoint
 router.post('/', calculateWorkingHours)

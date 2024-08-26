@@ -1,7 +1,7 @@
 // Function that converts time from HH:MM format to minutes
 const convertTimeToMinutes = (time) => {
   const timeArray = time.split(':')
-  const minutes = (parseInt(timeArray[0]) * 60) + parseInt(timeArray[1])
+  const minutes = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1])
 
   return minutes
 }
