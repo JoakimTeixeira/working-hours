@@ -16,7 +16,6 @@ System that calculates working hours
 - [ ] Enhance mobile responsiveness
 - [ ] Implement "Favorites" feature
 - [ ] Save data temporally in Local Storage
-- [ ] Persist in database
 
 ## Running the Project
 
